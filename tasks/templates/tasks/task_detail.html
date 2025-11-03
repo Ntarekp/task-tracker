@@ -1,0 +1,14 @@
+% extendes 'task/base.html' %
+{% block content %}
+<h1>{{task.title}}</h1>
+<p><strong>Description:</strong>{{task.description}}</p>
+<p><strong>Due Date:</strong> {{ task.due_date }}</p>
+<p><strong>Created by:</strong> {{ task.created_by.username }}</p>
+
+{% if user == task.created_by %}
+<a href="{% url 'task_update' task.pk %}"><button>Edit</button></a>
+<a href="{% url 'task_delete' task.pk %}"><button>Delete</button></a>
+{% endif %}
+
+<a href="{% url 'task_list' %}"><button>Back to List</button></a>
+{% endblock %}
