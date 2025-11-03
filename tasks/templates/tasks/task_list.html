@@ -1,0 +1,12 @@
+{% extends 'tasks/base.html' %}
+{% block content %}
+<h1> All Tasks</h1>
+
+{% for task in tasks %}
+<div class="task">
+    <h3><a href="{% url 'task_detail' task.pk %}">{{task.title}} </a></h3>
+    <p>Due: {{ task.due_date }} | By: {{ task.created_by.username }}</p>
+
+</div>
+{%endfor%}
+{%endblock%}
